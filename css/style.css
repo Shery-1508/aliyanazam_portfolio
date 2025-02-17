@@ -1,0 +1,443 @@
+:root {
+    --bg-color: #0a192f;
+    --text-color: #a8b2d1;
+    --heading-color: #e6f1ff;
+    --highlight-color: #64ffda;
+    --font-mono: 'SF Mono', 'Fira Code', monospace;
+    --font-sans: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-sans);
+    line-height: 1.7;
+    font-size: 18px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header/Hero Section */
+header {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    padding: 30px 0;
+}
+
+.profile-section {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 40px;
+    align-items: center;
+    position: relative;
+}
+
+.profile-content h1 {
+    color: var(--heading-color);
+    font-size: 4.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.profile-content .subtitle {
+    font-size: 2.5rem;
+    color: var(--heading-color);
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.profile-content p {
+    font-size: 1.2rem;
+    max-width: 540px;
+    margin-bottom: 30px;
+}
+
+/* Enhanced Profile Image Styling */
+.profile-image-container {
+    position: relative;
+    width: 350px;
+    height: 450px;
+    margin-left: auto;
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+    background-blend-mode: multiply;
+    box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7);
+}
+
+.profile-image-container::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    background: var(--highlight-color);
+    top: 0;
+    left: 0;
+    mix-blend-mode: screen;
+    opacity: 0.1;
+    transition: all 0.3s ease;
+}
+
+.profile-image-container::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--highlight-color);
+    border-radius: 8px;
+    top: 20px;
+    left: 20px;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.profile-image-container:hover::before {
+    opacity: 0;
+}
+
+.profile-image-container:hover::after {
+    transform: translate(-10px, -10px);
+}
+
+.title {
+    color: var(--highlight-color);
+    font-family: var(--font-mono);
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.contact-info {
+    margin-top: 20px;
+}
+
+/* Enhanced Contact Links */
+.contact-info a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 4px;
+    background: rgba(100, 255, 218, 0.05);
+    margin: 5px;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--heading-color);
+}
+
+.contact-info a:hover {
+    background: rgba(100, 255, 218, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(100, 255, 218, 0.3);
+}
+
+/* Section Styles */
+.section {
+    padding: 60px 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+h2 {
+    color: var(--heading-color);
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-weight: 700;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 200px;
+    background-color: var(--highlight-color);
+    margin-left: 20px;
+    opacity: 0.3;
+}
+
+/* Update Services/What I Do section */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.service-card {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 25px;
+    border-radius: 4px;
+    text-align: left;
+    transition: var(--transition);
+    border: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+.service-card h3 {
+    color: var(--heading-color);
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+}
+
+.service-card i {
+    font-size: 1.2rem;
+    color: var(--highlight-color);
+}
+
+.service-card p {
+    font-size: 1.1rem;
+    line-height: 1.4;
+}
+
+/* Update Portfolio section */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.portfolio-item {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-5px);
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.portfolio-info {
+    padding: 20px;
+}
+
+.portfolio-info h3 {
+    color: var(--heading-color);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.portfolio-info p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border: 1px solid var(--highlight-color);
+    color: var(--highlight-color);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: rgba(100, 255, 218, 0.1);
+    box-shadow: 0 0 15px rgba(100, 255, 218, 0.3);
+}
+
+/* Skills Section */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.skill-category h3 {
+    color: var(--heading-color);
+    margin-bottom: 20px;
+    font-family: var(--font-mono);
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.skill-items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.skill-item {
+    color: var(--text-color);
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    padding: 8px 0 8px 25px;
+    position: relative;
+}
+
+.skill-item::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--highlight-color);
+}
+
+/* Animated Background */
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.05;
+    background: 
+        linear-gradient(to right, transparent 90%, var(--highlight-color) 90%),
+        linear-gradient(to bottom, transparent 90%, var(--highlight-color) 90%);
+    background-size: 50px 50px;
+    animation: backgroundMove 15s linear infinite;
+}
+
+@keyframes backgroundMove {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 50px 50px;
+    }
+}
+
+/* Scroll Progress Indicator */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: rgba(100, 255, 218, 0.1);
+    z-index: 1000;
+}
+
+.scroll-progress-bar {
+    height: 100%;
+    background: var(--highlight-color);
+    width: 0%;
+    transition: width 0.1s ease;
+}
+
+/* Floating Navigation Dots */
+.nav-dots {
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 100;
+}
+
+.nav-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(100, 255, 218, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-dot.active {
+    background: var(--highlight-color);
+    transform: scale(1.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .profile-section {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .profile-image {
+        width: 280px;
+        height: 380px;
+        margin: 0 auto;
+    }
+
+    .profile-image::after {
+        top: 10px;
+        left: 10px;
+        right: -10px;
+        bottom: -10px;
+    }
+
+    .profile-content h1 {
+        font-size: 3rem;
+    }
+
+    .profile-content .subtitle {
+        font-size: 2rem;
+    }
+
+    .profile-content p {
+        font-size: 1.1rem;
+    }
+
+    h2::after {
+        width: 100px;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .services-grid,
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .portfolio-item {
+        aspect-ratio: 16/9;
+    }
+
+    body {
+        font-size: 16px;
+    }
+} 
