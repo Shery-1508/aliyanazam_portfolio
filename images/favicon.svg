@@ -1,0 +1,10 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .letter { fill: #64ffda; }
+    @media (prefers-color-scheme: light) {
+      .letter { fill: #0a192f; }
+    }
+  </style>
+  <rect width="32" height="32" rx="16" fill="#0a192f"/>
+  <path class="letter" d="M20.5 23h-3l-1.5-3.5h-5L9.5 23h-3l6-14h2l6 14zm-5.3-6l-1.7-4-1.7 4h3.4z"/>
+</svg> 
